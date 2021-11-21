@@ -44,6 +44,16 @@ public class InfoActivity extends AppCompatActivity {
             startActivity(mapIntent);
     }
 
+    public void createPhoneIntent(View view) {
+        //Use the Intent setData() method and pass in a URI of the telephone number "tel:0123456789".
+        // You can create a URI with the Uri.parse() method.
+
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        Uri uri = Uri.parse("tel:0123456789");
+        intent.setData(uri);
+        startActivity(intent);
+    }
+
     // ***
     // TODO - Task 2 - Launch the Google Maps Activity
     // ***
