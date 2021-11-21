@@ -1,5 +1,8 @@
 package com.pluralsight.candycoded;
 
+import static android.content.Intent.ACTION_SEND;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -9,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     Cursor cursor = db.rawQuery("SELECT * FROM candy", null);
 
     final CandyCursorAdapter adapter = new CandyCursorAdapter(this, cursor);
-    ListView listView = (ListView)this.findViewById(R.id.list_view_candy);
+    ListView listView = this.findViewById(R.id.list_view_candy);
 
     listView.setAdapter(adapter);
 
@@ -79,6 +83,17 @@ public class MainActivity extends AppCompatActivity {
     inflater.inflate(R.menu.main, menu);
     return true;
   }
+
+  @Override
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+    Intent infoIntent  = new Intent(this, InfoActivity.class);
+    startActivity(infoIntent );
+
+    return super.onOptionsItemSelected(item);
+  }
+
+
   // ***
   // TODO - Task 1 - Show Store Information Activity
   // ***
